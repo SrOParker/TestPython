@@ -66,27 +66,29 @@ check(test)
 ## Testing with unittest
 import unittest
 class TestForFind(unittest.TestCase):
-
+    # Correct values, in range 
     def test_correct(self):
         a = 1
         b = 11
         y = 2.0
         result = find(f, y, a, b)
-        self.assertNotEqual(result, 10)  
-
+        self.assertEqual(result, 2)  
+    
+    # Not in range should be -1
     def test_invalid(self):
         a = 1
         b = 8
-        y = 7.0  
+        y = 9.0  
         result = find(f, y, a, b)
-        self.assertNotEqual(result, -1)
+        self.assertEqual(result, -1)
 
+    # All values are 0 the result should be -1 because no range
     def test_all_0_values(self):
         a = 0
         b = 0
         y = 0.0
         result = find(f, y, a, b)
-        self.assertNotEqual(result, 0)
+        self.assertEqual(result, -1)
 
 if __name__ == '__main__':
     unittest.main()
